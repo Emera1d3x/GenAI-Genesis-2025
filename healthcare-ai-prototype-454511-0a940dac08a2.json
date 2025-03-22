@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "healthcare-ai-prototype-454511",
+  "private_key_id": "0a940dac08a2122883d29fdb103ed67aee848e98",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDcOaJbkfKAbtkf\nMeVfzjtaY0htCp37mCHTBLhcygpqpvo8NjYO8a3yVXrkhIekOrX3Af9LAHfcHLRi\nqDuNE5KYZu+Jqm5S8zI2VXCb3iHHE7CDpmwaAylCaoP3JGafvxOYEUDWorcGZeKE\nCF9zsXATMGtYV4nvVGIJNv3PhT5mRByBYiXNGGeGHJCKTxUkLphrbatSTEodxuOh\nS9xjwaP1YxAvpkW6MFKrq6FHv25DiA87ylOOQktFGQf3gYPB36WmgLuWa4VVm3jV\nLz/hz/72mFKHRmbXSf1deQkwJQX0ZLnsFPXMuvsUsirAeDd/3vGPf7cRkpUG7fDX\n+RCrXmbhAgMBAAECggEAQdy6wcgUTnTYWowBnXWAKrgmoPXb6bLF6uYufRGvq9Xk\nYL2VzUJaU29dIZrBNkyYvxbJ0xSAxEORbzABH2ALJ6khWnquJAC3s6g51WPJllA9\nKiJLkjv/yu0wKmmoh34Nzhza11YyhqdR50rZwS//5L1GXVVQ21LRPxBDOB0RXGPU\nPi38isXOTpp+rs5JLpC/WOsYP/5FFPuik+HXK/zGsfBen+9hiMUKCryaXwiJiNnw\n7vq5/tqcdjOu4fC2z9PsYTDlCmHIjeeHTtb1n1uzZgbcz8GEWpx+IO/Qs4SVvxTW\n/5wt14UDzrwGhzVWFCjBrAZcqIUt2XSJXliZxnrjQQKBgQD3XMg3iHm+JEEPQCfr\nI07S6kgHruqr6nv5aGu+/Z0Ds+EpMuQIfywmSuweUNvHWvmhAt+kSuNmonWEkrjC\nCcs4WVATplHLEY7IKdLw3xekSxkQoRfQa7GYcODoUjm2RL98w3Xv6SCcayGZehBK\nhQPihVSmzf6WeD+Fwh2MeE/2CwKBgQDj6kRRa0AVk3rIbiMW0YPZBbZyYhgzKQsT\n0L7zoaaThmDgS8dxyXRb0bghbY07RAtFxdNe486MpO+D8npGaf19Hf8L5E76ordb\nvZB+yNDEzxk9AZSEFKYSnqv1xgbGjDCMg0bd7PhDPLBDfgxtlloKzDSQLJD8RsLc\nhg3GP75GQwKBgQDEdgFi8dbXaI3voeHShGlvZLmuuIMT5ZlvXjrtJxqUvUIgaZXp\nFbAn/auI7GmR7TSEZ/bd0sjHVFKH58wr+IFaEL1jzd36rcg8O9OYkWeCik6vAXMb\nit0zmLtYaS4DEJkRa2B5GixXb1LxRZw4w2pxd7ni/YqtUXYKM0EqtsezPwKBgQCb\nA1TgA5AcnKgf9jjLZkjErIwAlBNdiIbOPWYCkmmXYQg2xZOrIpePc75GjhpGuurn\n07sFiO+M3QlCtwLPLXuJQ4OadPf6o/0N2oqSkMbddPX3dkGq69hgRaczjDJDjEng\n59ClVG0uXfKMlQii6GXpfiYqAQXDb+VM06g+tFAXvQKBgDIypSZJ+Fo5z4L5+mpE\ntR+vKB+0NVKq0cC1vquQiQCg+RbSJ9F/xs1s+5517r/NpW3KUIk9cmWGSBeCfVB8\nhsGFgGNBS4C4hN11K+DlYzL3qfbLP4KXMGHXBGl5ILd1jm5Ngomqu41g43TABa71\nB89IKmU8L1t2cvUPRY7n3yOr\n-----END PRIVATE KEY-----\n",
+  "client_email": "firestore-acces@healthcare-ai-prototype-454511.iam.gserviceaccount.com",
+  "client_id": "103313011665863406178",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firestore-acces%40healthcare-ai-prototype-454511.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
