@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 .env
 google-key.json
+.env
+google-key.json
