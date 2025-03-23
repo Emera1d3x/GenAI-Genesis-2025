@@ -97,7 +97,7 @@ Presents filtered, prioritized data through an intuitive Streamlit dashboard.
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/swiftcareai.git
+git https://github.com/Emera1d3x/GenAI-Genesis-2025
 cd swiftcareai
 ```
 
