@@ -70,3 +70,7 @@
 2025-03-23 07:42:51,162 - INFO - New patient processed: {'patient_id': '231', 'symptoms': [''], 'vitals': {'blood_pressure': '120/90', 'heart_rate': 90, 'temperature': 37.0, 'oxygen_saturation': 98}, 'triage_score': 0.5, 'symptom_summary': ' The symptoms listed summarize and prioritize are as follows:\n\n- Headache \n- Dizziness \n- Blurred vision \n- Weakness \n- Tingling in arms \n- Stiff neck \n\nThese symptoms seem', 'recommended_hospital': "UCSF Benioff Children's Hospital San Francisco"}
 2025-03-23 08:03:36,516 - INFO - Firebase initialized successfully.
 2025-03-23 08:03:36,775 - INFO - Cohere client initialized successfully.
+2025-03-23 08:07:06,090 - INFO - Firebase initialized successfully.
+2025-03-23 08:07:06,326 - INFO - Cohere client initialized successfully.
+2025-03-23 08:07:11,653 - INFO - Firebase initialized successfully.
+2025-03-23 08:07:11,909 - INFO - Cohere client initialized successfully.
