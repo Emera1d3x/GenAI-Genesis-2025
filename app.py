@@ -1,8 +1,8 @@
 import streamlit as st
-from google.cloud import firestore
 from dotenv import load_dotenv
 import os
 import logging
+from backend import TriageFlow, db  # Import db from backend
 
 # Load environment variables
 load_dotenv()
@@ -16,13 +16,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Initialize Firestore client
-try:
-    db = firestore.Client.from_service_account_json(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
-    logger.info("Firestore client initialized successfully.")
-except Exception as e:
-    logger.error(f"Failed to initialize Firestore client: {e}")
-    raise
+# Initialize TriageFlow
+flow = TriageFlow()
 
 # Streamlit app
 st.set_page_config(page_title="SwiftCareAI", page_icon="🏥", layout="wide")
@@ -61,6 +56,46 @@ st.markdown(
 st.title("🏥 SwiftCareAI")
 st.markdown("**Real-time decision support tool for doctors and medical staff.**")
 
+# Add new patient form
+st.header("📝 Add New Patient")
+with st.form("new_patient_form"):
+    patient_id = st.text_input("Patient ID")
+    symptoms = st.text_input("Symptoms (comma-separated)")
+    
+    # Vitals inputs
+    st.subheader("Vitals")
+    col1, col2 = st.columns(2)
+    with col1:
+        blood_pressure = st.text_input("Blood Pressure (e.g., 120/80)")
+        heart_rate = st.number_input("Heart Rate (bpm)", min_value=0, max_value=300)
+    with col2:
+        temperature = st.number_input("Temperature (°C)", min_value=30.0, max_value=45.0, value=37.0)
+        oxygen_saturation = st.number_input("Oxygen Saturation (%)", min_value=0, max_value=100, value=98)
+
+    submitted = st.form_submit_button("Submit Patient Data")
+    
+    if submitted:
+        try:
+            # Prepare input data
+            input_data = {
+                "patient_id": patient_id,
+                "symptoms": [s.strip() for s in symptoms.split(",")],
+                "vitals": {
+                    "blood_pressure": blood_pressure,
+                    "heart_rate": heart_rate,
+                    "temperature": temperature,
+                    "oxygen_saturation": oxygen_saturation
+                }
+            }
+            
+            # Process through TriageFlow
+            result = flow.run(input_data)
+            st.success(f"Patient {patient_id} added successfully!")
+            logger.info(f"New patient processed: {result}")
+        except Exception as e:
+            st.error(f"Error processing patient data: {str(e)}")
+            logger.error(f"Error processing patient data: {e}")
+
 # Fetch patient data from Firestore
 def fetch_patients():
     try:
@@ -77,6 +112,9 @@ st.header("📋 Prioritized Patient List")
 patients = fetch_patients()
 
 if patients:
+    # Sort patients by triage score (highest first)
+    patients.sort(key=lambda x: x.get('triage_score', 0), reverse=True)
+    
     for patient in patients:
         with st.container():
             st.subheader(f"🆔 Patient ID: {patient['patient_id']}")
@@ -92,23 +130,18 @@ if patients:
 else:
     st.warning("No patient data found.")
 
-# Real-time alerts
-st.header("🚨 Real-Time Alerts")
-alerts = [
-    {"patient_id": "123", "message": "Heart rate increased to 130 bpm"},
-    {"patient_id": "456", "message": "Blood pressure dropped to 90/60"},
-]
-
-for alert in alerts:
-    st.warning(f"**Alert for Patient {alert['patient_id']}:** {alert['message']}")
-
 # Key metrics
 st.header("📊 Key Metrics")
 if patients:
+    # Count patients by priority level
+    high_priority = sum(1 for p in patients if p.get('triage_score', 0) >= 0.9)
+    medium_priority = sum(1 for p in patients if 0.5 < p.get('triage_score', 0) < 0.9)
+    low_priority = sum(1 for p in patients if p.get('triage_score', 0) <= 0.5)
+    
     st.write(f"**👥 Total Patients:** {len(patients)}")
-    st.write(f"**🔴 High Priority Patients:** {len([p for p in patients if p.get('triage_score', 0) > 0.8])}")
-    st.write(f"**🟠 Medium Priority Patients:** {len([p for p in patients if 0.5 < p.get('triage_score', 0) <= 0.8])}")
-    st.write(f"**🟢 Low Priority Patients:** {len([p for p in patients if p.get('triage_score', 0) <= 0.5])}")
+    st.write(f"**🔴 High Priority Patients:** {high_priority}")
+    st.write(f"**🟠 Medium Priority Patients:** {medium_priority}")
+    st.write(f"**🟢 Low Priority Patients:** {low_priority}")
 else:
     st.warning("No metrics available.")
 

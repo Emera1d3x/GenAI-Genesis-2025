@@ -6,3 +6,67 @@
 2025-03-23 00:42:06,178 - INFO - Successfully fetched hospitals from OpenStreetMap.
 2025-03-23 00:42:06,192 - INFO - Recommended hospital: UCSF Benioff Children's Hospital San Francisco
 2025-03-23 00:42:06,193 - INFO - Triage flow completed successfully.
+2025-03-23 07:22:29,119 - INFO - Firebase initialized successfully.
+2025-03-23 07:22:29,727 - INFO - Cohere client initialized successfully.
+2025-03-23 07:22:30,266 - INFO - Patient data saved successfully: {'patient_id': '123', 'symptoms': ['chest pain', 'shortness of breath'], 'vitals': {'blood_pressure': 120, 'heart_rate': 90}}
+2025-03-23 07:22:32,224 - INFO - HTTP Request: POST https://api.cohere.com/v1/generate "HTTP/1.1 200 OK"
+2025-03-23 07:22:32,226 - INFO - Triage score assigned: 0.9
+2025-03-23 07:22:33,031 - INFO - Successfully fetched hospitals from OpenStreetMap.
+2025-03-23 07:22:33,031 - INFO - Recommended hospital: UCSF Benioff Children's Hospital San Francisco
+2025-03-23 07:22:33,031 - INFO - Triage flow completed successfully.
+2025-03-23 07:26:12,302 - INFO - Firebase initialized successfully.
+2025-03-23 07:26:12,533 - INFO - Cohere client initialized successfully.
+2025-03-23 07:26:13,224 - INFO - Patient data saved successfully: {'patient_id': '123', 'symptoms': ['chest pain', 'shortness of breath'], 'vitals': {'blood_pressure': 120, 'heart_rate': 90}}
+2025-03-23 07:26:18,212 - INFO - HTTP Request: POST https://api.cohere.com/v1/generate "HTTP/1.1 200 OK"
+2025-03-23 07:26:18,213 - INFO - Triage score assigned: 0.9
+2025-03-23 07:26:18,927 - INFO - Successfully fetched hospitals from OpenStreetMap.
+2025-03-23 07:26:18,927 - INFO - Recommended hospital: UCSF Benioff Children's Hospital San Francisco
+2025-03-23 07:26:18,927 - INFO - Triage flow completed successfully.
+2025-03-23 07:30:31,424 - INFO - Firebase initialized successfully.
+2025-03-23 07:30:31,683 - INFO - Cohere client initialized successfully.
+2025-03-23 07:30:31,707 - INFO - Firestore client initialized successfully.
+2025-03-23 07:31:30,207 - INFO - Firestore client initialized successfully.
+2025-03-23 07:31:30,738 - INFO - Patient data saved successfully: {'patient_id': '1234', 'symptoms': ['chest pain'], 'vitals': {'blood_pressure': '120/80', 'heart_rate': 90, 'temperature': 37.0, 'oxygen_saturation': 98}}
+2025-03-23 07:31:35,657 - INFO - HTTP Request: POST https://api.cohere.com/v1/generate "HTTP/1.1 200 OK"
+2025-03-23 07:31:35,659 - INFO - Triage score assigned: 0.9
+2025-03-23 07:31:36,316 - INFO - Successfully fetched hospitals from OpenStreetMap.
+2025-03-23 07:31:36,316 - INFO - Recommended hospital: UCSF Benioff Children's Hospital San Francisco
+2025-03-23 07:31:36,316 - INFO - Triage flow completed successfully.
+2025-03-23 07:31:36,317 - INFO - New patient processed: {'patient_id': '1234', 'symptoms': ['chest pain'], 'vitals': {'blood_pressure': '120/80', 'heart_rate': 90, 'temperature': 37.0, 'oxygen_saturation': 98}, 'triage_score': 0.9, 'symptom_summary': ' Chest pain is a common symptom that may be caused by a variety of factors, such as underlying medical conditions, stress, or poor physical health. It is important to recognize that self-diagnosing your symptoms is not a good idea, and to', 'recommended_hospital': "UCSF Benioff Children's Hospital San Francisco"}
+2025-03-23 07:32:06,034 - INFO - Firestore client initialized successfully.
+2025-03-23 07:32:06,155 - INFO - Patient data saved successfully: {'patient_id': '123421', 'symptoms': [''], 'vitals': {'blood_pressure': '120/80', 'heart_rate': 90, 'temperature': 37.0, 'oxygen_saturation': 98}}
+2025-03-23 07:32:07,715 - INFO - HTTP Request: POST https://api.cohere.com/v1/generate "HTTP/1.1 200 OK"
+2025-03-23 07:32:07,716 - INFO - Triage score assigned: 0.5
+2025-03-23 07:32:08,421 - INFO - Successfully fetched hospitals from OpenStreetMap.
+2025-03-23 07:32:08,422 - INFO - Recommended hospital: UCSF Benioff Children's Hospital San Francisco
+2025-03-23 07:32:08,422 - INFO - Triage flow completed successfully.
+2025-03-23 07:32:08,422 - INFO - New patient processed: {'patient_id': '123421', 'symptoms': [''], 'vitals': {'blood_pressure': '120/80', 'heart_rate': 90, 'temperature': 37.0, 'oxygen_saturation': 98}, 'triage_score': 0.5, 'symptom_summary': ' The symptoms listed indicate a range of potential health concerns and are listed alphabetically. In order to prioritize and provide more clarity on these common symptoms, could you specify a particular priority or context for these symptoms? For instance, do you want to know the most', 'recommended_hospital': "UCSF Benioff Children's Hospital San Francisco"}
+2025-03-23 07:35:11,972 - INFO - Firebase initialized successfully.
+2025-03-23 07:35:12,230 - INFO - Cohere client initialized successfully.
+2025-03-23 07:35:12,256 - INFO - Firestore client initialized successfully.
+2025-03-23 07:35:31,864 - INFO - Firestore client initialized successfully.
+2025-03-23 07:38:28,256 - INFO - Firebase initialized successfully.
+2025-03-23 07:38:28,518 - INFO - Cohere client initialized successfully.
+2025-03-23 07:38:28,543 - INFO - Firestore client initialized successfully.
+2025-03-23 07:38:34,625 - ERROR - Failed to initialize Firebase: The default Firebase app already exists. This means you called initialize_app() more than once without providing an app name as the second argument. In most cases you only need to call initialize_app() once. But if you do want to initialize multiple apps, pass a second argument to initialize_app() to give each app a unique name.
+2025-03-23 07:39:59,397 - INFO - Firebase initialized successfully.
+2025-03-23 07:39:59,652 - INFO - Cohere client initialized successfully.
+2025-03-23 07:40:10,437 - INFO - Firebase already initialized.
+2025-03-23 07:40:10,655 - INFO - Cohere client initialized successfully.
+2025-03-23 07:42:07,040 - INFO - Firebase initialized successfully.
+2025-03-23 07:42:07,297 - INFO - Cohere client initialized successfully.
+2025-03-23 07:42:18,818 - INFO - Firebase already initialized.
+2025-03-23 07:42:19,070 - INFO - Cohere client initialized successfully.
+2025-03-23 07:42:48,795 - INFO - Processing symptoms: ['']
+2025-03-23 07:42:48,795 - INFO - Normalized symptoms: ['']
+2025-03-23 07:42:50,486 - INFO - HTTP Request: POST https://api.cohere.com/v1/generate "HTTP/1.1 200 OK"
+2025-03-23 07:42:50,486 - INFO - Has high priority symptoms: False
+2025-03-23 07:42:50,486 - INFO - Assigned MEDIUM priority triage score: 0.5
+2025-03-23 07:42:50,486 - INFO - Triage result: {'triage_score': 0.5, 'symptom_summary': ' The symptoms listed summarize and prioritize are as follows:\n\n- Headache \n- Dizziness \n- Blurred vision \n- Weakness \n- Tingling in arms \n- Stiff neck \n\nThese symptoms seem'}
+2025-03-23 07:42:51,027 - INFO - Successfully fetched hospitals from OpenStreetMap.
+2025-03-23 07:42:51,027 - INFO - Recommended hospital: UCSF Benioff Children's Hospital San Francisco
+2025-03-23 07:42:51,161 - INFO - Patient data saved successfully: {'patient_id': '231', 'symptoms': [''], 'vitals': {'blood_pressure': '120/90', 'heart_rate': 90, 'temperature': 37.0, 'oxygen_saturation': 98}, 'triage_score': 0.5, 'symptom_summary': ' The symptoms listed summarize and prioritize are as follows:\n\n- Headache \n- Dizziness \n- Blurred vision \n- Weakness \n- Tingling in arms \n- Stiff neck \n\nThese symptoms seem', 'recommended_hospital': "UCSF Benioff Children's Hospital San Francisco"}
+2025-03-23 07:42:51,161 - INFO - Triage flow completed successfully.
+2025-03-23 07:42:51,162 - INFO - New patient processed: {'patient_id': '231', 'symptoms': [''], 'vitals': {'blood_pressure': '120/90', 'heart_rate': 90, 'temperature': 37.0, 'oxygen_saturation': 98}, 'triage_score': 0.5, 'symptom_summary': ' The symptoms listed summarize and prioritize are as follows:\n\n- Headache \n- Dizziness \n- Blurred vision \n- Weakness \n- Tingling in arms \n- Stiff neck \n\nThese symptoms seem', 'recommended_hospital': "UCSF Benioff Children's Hospital San Francisco"}
+2025-03-23 08:03:36,516 - INFO - Firebase initialized successfully.
+2025-03-23 08:03:36,775 - INFO - Cohere client initialized successfully.

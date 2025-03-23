@@ -1,0 +1,6 @@
+streamlit>=1.28.0
+google-cloud-firestore>=2.13.1
+python-dotenv>=1.0.0
+firebase-admin>=6.4.0
+cohere>=4.37
+requests>=2.31.0
