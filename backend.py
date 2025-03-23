@@ -1,14 +1,19 @@
 import os
 from dotenv import load_dotenv
-from google.cloud import firestore
+import firebase_admin
+from firebase_admin import credentials, firestore
 import cohere
 import googlemaps
 
 # Load environment variables
 load_dotenv()
 
+# Initialize Firebase
+cred = credentials.Certificate("C:/Users/POLSTORE/GenAI-Genesis-2025/firebase-key.json")  # Download this from Firebase Console
+firebase_admin.initialize_app(cred)
+
 # Initialize Firestore client
-db = firestore.Client.from_service_account_json(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+db = firestore.client()
 
 # Initialize Cohere client
 co = cohere.Client(os.getenv("COHERE_API_KEY"))
