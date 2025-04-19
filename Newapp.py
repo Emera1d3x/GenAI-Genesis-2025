@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 import os
 import logging
 import pandas as pd
-import plotly.express as px
 import time
 from datetime import datetime
 
@@ -42,10 +41,11 @@ st.markdown(
     """
     <style>
     .main {
-        background-color: #f8f9fa;
+        background-color: #0e1117;
+        color: #ffffff;
     }
     h1, h2, h3 {
-        color: #2c3e50;
+        color: #ffffff;
         font-family: 'Helvetica Neue', sans-serif;
     }
     .stButton button {
@@ -62,7 +62,7 @@ st.markdown(
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     .patient-card {
-        background-color: white;
+        background-color: #14171f;
         border-radius: 10px;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -78,7 +78,7 @@ st.markdown(
         border-left: 5px solid #2ecc71;
     }
     .metric-container {
-        background-color: white;
+        background-color: #14171f;
         border-radius: 10px;
         padding: 15px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -113,7 +113,7 @@ st.markdown(
 
 # Sidebar
 with st.sidebar:
-    st.image("https://i.imgur.com/zzGhxJf.png", width=100)  # Placeholder for logo
+    st.image("Logo.png", width=100)  # Placeholder for logo
     st.title("SwiftCareAI")
     st.markdown("---")
     
@@ -203,6 +203,70 @@ if page == "Dashboard":
     st.title("📊 SwiftCareAI Dashboard")
     st.markdown("Real-time decision support for medical professionals in high-pressure environments")
     
+    # Add new patient form
+    st.header("📝 Add New Patient")
+    with st.form("new_patient_form"):
+        patient_id = st.text_input("Patient ID")
+        symptoms = st.text_input("Symptoms (comma-separated)")
+        
+        # Vitals inputs
+        st.subheader("Vitals")
+        col1, col2 = st.columns(2)
+        with col1:
+            blood_pressure = st.text_input("Blood Pressure (e.g., 120/80)")
+            heart_rate = st.number_input("Heart Rate (bpm)", min_value=0, max_value=300)
+        with col2:
+            temperature = st.number_input("Temperature (°C)", min_value=30.0, max_value=45.0, value=37.0)
+            oxygen_saturation = st.number_input("Oxygen Saturation (%)", min_value=0, max_value=100, value=98)
+
+        submitted = st.form_submit_button("Submit Patient Data")
+        
+        if submitted:
+            try:
+                # Prepare vitals dictionary
+                vitals = {
+                    "blood_pressure": blood_pressure,
+                    "heart_rate": heart_rate,
+                    "temperature": temperature,
+                    "oxygen_saturation": oxygen_saturation
+                }
+                
+                # Calculate initial triage score (simplified example)
+                triage_score = 0.5  # Default medium priority
+                
+                # Convert symptoms to lowercase for case-insensitive matching
+                symptoms_lower = [s.strip().lower() for s in symptoms.split(",")]
+                
+                # High priority conditions
+                high_priority_symptoms = ["chest pain", "chest tightness", "difficulty breathing", "shortness of breath"]
+                if any(symptom in high_priority_symptoms for symptom in symptoms_lower):
+                    triage_score = 0.9  # High priority
+                elif temperature > 39.0 or heart_rate > 120 or oxygen_saturation < 90:
+                    triage_score = 0.9  # High priority
+                elif temperature > 38.0 or heart_rate > 100 or oxygen_saturation < 95:
+                    triage_score = 0.7  # Medium-high priority
+                
+                # Prepare patient data
+                patient_data = {
+                    "patient_id": patient_id,
+                    "symptoms": [s.strip() for s in symptoms.split(",")],
+                    "vitals": vitals,
+                    "triage_score": triage_score,
+                    "admission_time": datetime.now().isoformat(),
+                    "last_updated": datetime.now().isoformat()
+                }
+                
+                # Add to Firestore
+                db.collection("patients").document(patient_id).set(patient_data)
+                st.success(f"Patient {patient_id} added successfully!")
+                
+                # Log the action
+                logger.info(f"New patient added: {patient_id}")
+                
+            except Exception as e:
+                logger.error(f"Error adding patient: {e}")
+                st.error(f"Error adding patient: {str(e)}")
+    
     # Auto-refresh functionality
     if auto_refresh:
         placeholder = st.empty()
@@ -284,11 +348,9 @@ if page == "Dashboard":
                         <div>
                             <p><strong>Triage Score:</strong> {triage_score:.2f} ({priority_level} Priority)</p>
                             <p><strong>🩺 Symptoms:</strong> {', '.join(patient.get('symptoms', []))}</p>
-                            <p><strong>Summary:</strong> {patient.get('symptom_summary', 'N/A')}</p>
                         </div>
                         <div>
                             <p><strong>Vitals:</strong> {', '.join([f"{k}: {v}" for k, v in patient.get('vitals', {}).items()])}</p>
-                            <p><strong>🏥 Recommended:</strong> {patient.get('recommended_hospital', 'N/A')}</p>
                         </div>
                     </div>
                 </div>
@@ -327,7 +389,7 @@ if page == "Dashboard":
                     capacity_color = "#f39c12"  # Orange for getting full
                 
                 st.markdown(f"""
-                <div style="background-color: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <div style="background-color: #14171f; padding: 15px; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
                     <h4>{hospital.get('name', 'Unknown Hospital')}</h4>
                     <p>Capacity: <span style="color: {capacity_color};">{capacity}%</span></p>
                     <p>Distance: {hospital.get('distance', 'Unknown')} km</p>
@@ -370,7 +432,6 @@ elif page == "Patient Details":
                         
                         st.subheader("Current Symptoms")
                         st.write(", ".join(patient.get('symptoms', [])))
-                        st.write(f"**Symptom Summary:** {patient.get('symptom_summary', 'N/A')}")
                     
                     with col2:
                         st.subheader("Vital Signs")
@@ -382,11 +443,9 @@ elif page == "Patient Details":
                         triage_score = patient.get('triage_score', 0)
                         st.write(f"**Triage Score:** {triage_score:.2f}")
                         st.write(f"**Priority Level:** {get_priority_level(triage_score)}")
-                        st.write(f"**Recommended Hospital:** {patient.get('recommended_hospital', 'N/A')}")
                 
                 with tabs[1]:
                     st.subheader("Medical History")
-                    # Placeholder for medical history
                     st.info("Medical history would be displayed here in a real application.")
                     
                     # Sample medical history chart
@@ -528,7 +587,7 @@ st.markdown("---")
 st.markdown(
     """
     <div style="text-align: center; color: #7f8c8d; font-size: 0.8em;">
-        <p>SwiftCareAI - Built with ❤️ for better healthcare. © 2025</p>
+        <p>SwiftCareAI - Built with ❤️ for better healthcare. &copy; 2025</p>
     </div>
     """,
     unsafe_allow_html=True

@@ -4,3 +4,5 @@ __pycache__/
 .env
 google-key.json
 firebase-key.json
+frontend.log
+genaigenesis-c2ada-firebase-adminsdk-fbsvc-81a1978d23.json
